@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".TrendsActivity">
 
-    <Button
-        android:id="@+id/button1"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.smn_aggregator_assignment.BlankFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trends"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="261dp" />
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="77dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
