@@ -9,7 +9,8 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity  {
-    private Button button;
+    private Button buttonTrends;
+    private Button buttonSearch;
 
 
 
@@ -18,17 +19,18 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Intent explicitIntent = new Intent(MainActivity.this,TrendsActivity.class);
-        button = findViewById(R.id.button1);
+        final Intent trendsIntent = new Intent(MainActivity.this,TrendsActivity.class);
+        final Intent searchIntent = new Intent(MainActivity.this,SearchActivity.class);
+        buttonTrends = findViewById(R.id.trendsButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonTrends.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
 
 
-                startActivity(explicitIntent);
+                startActivity(trendsIntent);
 
 
 
@@ -39,6 +41,27 @@ public class MainActivity extends AppCompatActivity  {
 
             }
         });
+
+        buttonSearch = findViewById(R.id.searchButton);
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+
+                startActivity(searchIntent);
+
+
+
+
+
+
+
+
+            }
+        });
+
 
 
 

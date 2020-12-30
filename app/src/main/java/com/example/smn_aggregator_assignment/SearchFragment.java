@@ -7,18 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment#newInstance} factory method to
+ * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment extends Fragment {
-    private static final int WOEID_GR = 23424833;
+public class SearchFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,8 +24,7 @@ public class BlankFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
-    public BlankFragment() {
+    public SearchFragment() {
         // Required empty public constructor
     }
 
@@ -40,19 +34,18 @@ public class BlankFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
+     * @return A new instance of fragment SearchFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment newInstance(String param1, String param2) {
-        BlankFragment fragment = new BlankFragment();
+    public static SearchFragment newInstance(String param1, String param2) {
+        SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    private ListView trendsList;
-    private ArrayAdapter<String> trendsAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,27 +58,19 @@ public class BlankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blank,container,false);
         // Inflate the layout for this fragment
-
-
+        View view = inflater.inflate(R.layout.fragment_search,container,false);
 
 
 
         return view;
     }
 
+    @Override
     public void onStart() {
         super.onStart();
-        TwitterTopTrends t = new TwitterTopTrends(this);
-        t.execute(WOEID_GR);
-    }
-
-    public void setTrendList(ArrayList<String> items){
-        trendsList = this.getView().getRootView().findViewById(R.id.trendsList);
-        ArrayAdapter<String> trendsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
-
-        trendsList.setAdapter(trendsAdapter);
+        TwitterSearch t = new TwitterSearch();
+        t.execute();
 
     }
 }

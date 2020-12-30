@@ -16,24 +16,15 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterTopTrends extends AsyncTask<Integer,Void,ArrayList<String>> {
 
-    private Twitter twitter;
+    private Twitter twitter ;
+    TwitterConfig t =  new TwitterConfig();
+
     BlankFragment trendFragment;
 
     public TwitterTopTrends(BlankFragment fragment){
         this.trendFragment = fragment;
+        twitter = t.getTwitter();
     }
-
-    private void  twitterConfig() {
-        ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("du44RFHMUokyGyDBqD8WLuHEF")
-                .setOAuthConsumerSecret("eMeYz7zDzUmVXFbuChuj49wFvutttdMluuZjJUrKjXorUdkT8j")
-                .setOAuthAccessToken("1341061068534276097-VoUuu4wxcw28ZbHkh7EaQvEIoNr5Sa")
-                .setOAuthAccessTokenSecret("7xDxA2o90mIVf1KmgsJoJCew697phkSUv5Z8YA41goQmP");
-        TwitterFactory tf = new TwitterFactory(cb.build());
-        twitter = tf.getInstance();
-    }
-
 
 
 
@@ -42,9 +33,10 @@ public class TwitterTopTrends extends AsyncTask<Integer,Void,ArrayList<String>> 
 
     @Override
     protected ArrayList<String> doInBackground(Integer... codes) {
+
         int country = codes[0] ;
         ArrayList<String> names = new ArrayList<>();
-        this.twitterConfig();
+        
         Trends trends = null;
         try {
             trends = twitter.getPlaceTrends(country);
