@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class BlankFragment extends Fragment {
-    private static final int WOEID_GR = 23424833;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,8 +51,7 @@ public class BlankFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    private ListView trendsList;
-    private ArrayAdapter<String> trendsAdapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,10 +77,11 @@ public class BlankFragment extends Fragment {
     public void onStart() {
         super.onStart();
         TwitterTopTrends t = new TwitterTopTrends(this);
-        t.execute(WOEID_GR);
+        t.execute(MainActivity.WOEID_GR);
     }
 
     public void setTrendList(ArrayList<String> items){
+        ListView trendsList;
         trendsList = this.getView().getRootView().findViewById(R.id.trendsList);
         ArrayAdapter<String> trendsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
 

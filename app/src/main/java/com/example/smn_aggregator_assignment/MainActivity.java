@@ -11,6 +11,8 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity  {
     private Button buttonTrends;
     private Button buttonSearch;
+    public static final int WOEID_GR = 23424833;
+    public static final int TWITTER = 1;
 
 
 

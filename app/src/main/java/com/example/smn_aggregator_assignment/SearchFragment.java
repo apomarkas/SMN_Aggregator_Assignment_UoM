@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,8 +73,16 @@ public class SearchFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        TwitterSearch t = new TwitterSearch();
+        TwitterSearch t = new TwitterSearch(this);
         t.execute();
+
+    }
+
+    public void setSearchList(ArrayList<Post> items){
+        ListView searchList;
+        searchList = this.getView().getRootView().findViewById(R.id.searchList);
+        PostsAdapter adapter = new PostsAdapter(getActivity(),R.layout.search_layout,items);
+        searchList.setAdapter(adapter);
 
     }
 }

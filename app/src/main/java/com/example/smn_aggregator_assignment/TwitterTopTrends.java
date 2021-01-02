@@ -17,9 +17,9 @@ import twitter4j.conf.ConfigurationBuilder;
 public class TwitterTopTrends extends AsyncTask<Integer,Void,ArrayList<String>> {
 
     private Twitter twitter ;
-    TwitterConfig t =  new TwitterConfig();
+    private TwitterConfig t =  new TwitterConfig();
 
-    BlankFragment trendFragment;
+    private BlankFragment trendFragment;
 
     public TwitterTopTrends(BlankFragment fragment){
         this.trendFragment = fragment;
